@@ -9,10 +9,7 @@ type Result<T, E> = types.Result<T, E>
 
 local transform = {}
 
-function transform.map<T, U, E>(
-	result: Result<T, E>,
-	fn: (T) -> U
-): Result<U, E>
+function transform.map<T, U, E>(result: Result<T, E>, fn: (T) -> U): Result<U, E>
 	if result.ok == true then
 		return create.ok(fn(result.value))
 	end
@@ -20,10 +17,7 @@ function transform.map<T, U, E>(
 	return result
 end
 
-function transform.map_err<T, E, F>(
-	result: Result<T, E>,
-	fn: (E) -> F
-): Result<T, F>
+function transform.map_err<T, E, F>(result: Result<T, E>, fn: (E) -> F): Result<T, F>
 	if result.ok == false then
 		return create.err(fn(result.error))
 	end
@@ -31,11 +25,7 @@ function transform.map_err<T, E, F>(
 	return result
 end
 
-function transform.map_or<T, U, E>(
-	result: Result<T, E>,
-	default: U,
-	fn: (T) -> U
-): U
+function transform.map_or<T, U, E>(result: Result<T, E>, default: U, fn: (T) -> U): U
 	if result.ok == true then
 		return fn(result.value)
 	end
@@ -43,11 +33,7 @@ function transform.map_or<T, U, E>(
 	return default
 end
 
-function transform.map_or_else<T, U, E>(
-	result: Result<T, E>,
-	default: (E) -> U,
-	fn: (T) -> U
-): U
+function transform.map_or_else<T, U, E>(result: Result<T, E>, default: (E) -> U, fn: (T) -> U): U
 	if result.ok == true then
 		return fn(result.value)
 	end
@@ -55,11 +41,7 @@ function transform.map_or_else<T, U, E>(
 	return default(result.error)
 end
 
-function transform.filter<T, E>(
-	result: Result<T, E>,
-	predicate: (T) -> boolean,
-	error_value: E
-): Result<T, E>
+function transform.filter<T, E>(result: Result<T, E>, predicate: (T) -> boolean, error_value: E): Result<T, E>
 	if result.ok == false then
 		return result
 	end

@@ -32,11 +32,7 @@ function create.try<T>(fn: () -> T): Result<T, unknown>
 	return create.err(value)
 end
 
-function create.validate<T, E>(
-	value: T,
-	predicate: (T) -> boolean,
-	error: E
-): Result<T, E>
+function create.validate<T, E>(value: T, predicate: (T) -> boolean, error: E): Result<T, E>
 	if predicate(value) then
 		return create.ok(value)
 	end
