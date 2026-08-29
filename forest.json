@@ -1,5 +1,8 @@
 {
+  "author": "ablacksock",
   "dependencies": {},
+  "description": "A small, typed `Result<T, E>` utility for Luau",
+  "license": "MIT",
   "name": "result",
   "platform": "roblox",
   "root": "src/init.luau",
