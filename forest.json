@@ -1,0 +1,7 @@
+{
+  "dependencies": {},
+  "name": "result",
+  "platform": "roblox",
+  "root": "src/init.luau",
+  "version": "0.1.0"
+}
